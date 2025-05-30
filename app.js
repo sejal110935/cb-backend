@@ -16,8 +16,13 @@ const authMiddleware = require('./middleware/authmiddleware');
 dotenv.config();
 const app = express();
 
+const allowedOrigins = [
+  'http://localhost:3000',
+  'https://classbuddy-one.vercel.app', // ✅ Replace with your actual Vercel frontend URL
+];
+
 app.use(cors({
-  origin: 'http://localhost:3000', // Your Next.js app URL
+  origin: allowedOrigins, // Your Next.js app URL
   credentials: true
 }));
 app.use(express.json());
